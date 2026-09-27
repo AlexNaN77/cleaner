@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CLEANER — Tus fotos, lavaditas y sin rastro</title>
+    <meta name="description" content="CLEANER talla tus imágenes con agua y jabón: quita EXIF, XMP, IPTC y C2PA y las revela de nuevo como si salieran de una cámara de verdad. 100 % en tu navegador.">
+    <meta name="theme-color" content="#FBF6EC">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700;800;900&family=Caveat:wght@500;600;700&family=Gochi+Hand&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <header id="site-header" class="site-header wobbly">
+        <a href="#hero-section" class="brand" aria-label="CLEANER, inicio">
+            <span class="brand-mark" data-doodle="logo"></span>
+            <span class="brand-name" data-doodle="wordmark"></span>
+        </a>
+        <nav class="main-nav" aria-label="Navegación principal">
+            <a class="nav-link" href="#how-section" aria-label="Cómo funciona"><span class="nav-ico" data-doodle="navHow"></span><span class="nav-label">Cómo funciona</span><span data-doodle="navSquiggle"></span></a>
+            <a class="nav-link" href="#links-section" aria-label="Enlaces"><span class="nav-ico" data-doodle="navLinks"></span><span class="nav-label">Enlaces</span><span data-doodle="navSquiggle"></span></a>
+            <a class="nav-link nav-link-cta wobbly" href="#tool-section"><span class="nav-ico" data-doodle="navClean"></span><span class="nav-label">Limpiar</span></a>
+        </nav>
+    </header>
+
+    <main>
+        <!-- HERO -->
+        <section id="hero-section" class="hero">
+            <div class="hero-copy">
+                <p class="hero-kicker wobbly"><span class="kicker-dot"></span> 100 % en tu navegador · tus fotos nunca salen de tu compu</p>
+                <h1 class="hero-title">
+                    <span class="sr-only">CLEANER</span>
+                    <span class="hero-title-art" data-doodle="title"></span>
+                </h1>
+                <p class="hero-hand">la lavandería forense de tus imágenes ✨</p>
+                <p class="hero-subtitle">
+                    Le quitamos a tus fotos el <mark class="mark-scrub">EXIF, XMP, IPTC y las Content Credentials (C2PA)</mark>
+                    y luego las <strong>revelamos otra vez</strong> como si salieran de una cámara de verdad:
+                    lente, sensor, ruido y todo.
+                    <span class="subtitle-hand">Misma resolución. Cero rastro de que fueron alguna vez IA.</span>
+                </p>
+                <a href="#tool-section" id="cta-start" class="cta-btn wobbly">
+                    <span class="cta-art" data-doodle="cta"></span>
+                    <span class="cta-text">
+                        <span class="cta-main">Empezar a limpiar</span>
+                        <span class="cta-sub">Claude ya está hasta el gorro, pero va</span>
+                    </span>
+                </a>
+            </div>
+            <div class="hero-art" data-doodle="hero"></div>
+        </section>
+
+        <!-- CEJILLA: la gran pelea -->
+        <section id="brawl-section" class="brawl-strip wobbly" aria-label="Animación: mini Claudes contra Chrome">
+            <p class="brawl-title">mientras tanto, dentro de tu navegador…</p>
+            <div class="brawl-viewport brawl-desktop" data-doodle="brawl"></div>
+            <div class="brawl-viewport brawl-mobile" data-doodle="brawlMobile"></div>
+            <p class="brawl-foot">ningún Chrome salió herido (bueno, poquito) · tus fotos se procesan aquí mismo</p>
+        </section>
+
+        <!-- HERRAMIENTA -->
+        <section id="tool-section" class="tool" aria-labelledby="tool-title">
+            <h2 id="tool-title" class="section-title">A limpiar <span class="hand-accent">se ha dicho</span></h2>
+
+            <div class="tool-grid">
+                <div class="card upload-card wobbly">
+                    <label id="drop-zone" class="drop-zone wobbly" for="file-input" tabindex="0">
+                        <input id="file-input" type="file" accept="image/jpeg,image/png,image/webp,image/avif,image/gif,image/bmp" multiple hidden>
+                        <span class="drop-art" data-doodle="drop"></span>
+                        <span class="drop-title">Échalas aquí, todas las que quieras</span>
+                        <span class="drop-sub">arrastra, haz clic o pega con Ctrl+V · JPG, PNG, WebP</span>
+                    </label>
+
+                    <div id="queue-toolbar" class="queue-toolbar" hidden>
+                        <p id="queue-summary" class="queue-summary">0 imágenes</p>
+                        <div class="queue-actions">
+                            <button id="clear-btn" class="btn btn-ghost wobbly" type="button"><span class="btn-ico" data-doodle="icoTrash"></span> Vaciar</button>
+                            <button id="zip-btn" class="btn btn-secondary wobbly" type="button" disabled><span class="btn-ico" data-doodle="icoZip"></span> Descargar ZIP</button>
+                            <button id="clean-btn" class="btn btn-primary wobbly" type="button"><span class="btn-ico" data-doodle="icoBroom"></span> Limpiar todo</button>
+                        </div>
+                    </div>
+
+                    <ul id="queue-list" class="queue-list" aria-live="polite"></ul>
+                </div>
+
+                <aside class="card settings-card wobbly" aria-labelledby="settings-title">
+                    <h3 id="settings-title" class="card-title"><i class="fa-solid fa-sliders"></i> Ajustes</h3>
+
+                    <div class="mode-badge wobbly">
+                        <span class="mode-badge-art" data-doodle="forense"></span>
+                        <span>
+                            <strong>Modo Forense</strong>
+                            <span class="mode-hand">maquillamos que alguna vez fueron IA 💄</span>
+                            <small>Simula una cámara real: lente, sensor Bayer, demosaico, ruido y nitidez.</small>
+                        </span>
+                    </div>
+
+                    <fieldset class="field">
+                        <legend>Intensidad del tallado</legend>
+                        <div class="segmented wobbly" role="radiogroup" id="intensity-group">
+                            <label class="seg seg-low"><input type="radio" name="intensity" value="low"><span><span class="seg-art" data-doodle="intLow"></span>Suave</span></label>
+                            <label class="seg seg-mid"><input type="radio" name="intensity" value="medium"><span><span class="seg-art" data-doodle="intMid"></span>Media</span></label>
+                            <label class="seg seg-high"><input type="radio" name="intensity" value="high" checked><span><span class="seg-art" data-doodle="intHigh"></span>Fuerte</span></label>
+                        </div>
+                        <small id="intensity-hint" class="hint">"Fuerte" es la que mejor rompe la huella de IA.</small>
+                    </fieldset>
+
+                    <div class="field">
+                        <label for="format-select" class="field-label">Formato de salida</label>
+                        <select id="format-select" class="wobbly-input">
+                            <option value="original" selected>Igual que el original</option>
+                            <option value="image/jpeg">JPG</option>
+                            <option value="image/png">PNG</option>
+                            <option value="image/webp">WebP</option>
+                        </select>
+                    </div>
+
+                    <div id="quality-field" class="field">
+                        <label for="quality-range" class="field-label">Calidad JPG/WebP: <output id="quality-value">95</output></label>
+                        <input id="quality-range" type="range" min="80" max="100" value="95">
+                    </div>
+
+                    <label class="check"><input id="rename-check" type="checkbox" checked> Renombrar estilo cámara (IMG_…)</label>
+                </aside>
+            </div>
+        </section>
+
+        <!-- CÓMO FUNCIONA -->
+        <section id="how-section" class="how" aria-labelledby="how-title">
+            <h2 id="how-title" class="section-title">Cómo funciona <span class="hand-accent">(sin magia, bueno… un poquito)</span></h2>
+            <div class="how-grid">
+                <article class="how-card wobbly">
+                    <span class="how-art" data-doodle="iconScan"></span>
+                    <h3><span class="how-num">1</span> Le echamos lupa</h3>
+                    <p>Abrimos el archivo por dentro y te enseñamos todo lo que trae escondido: EXIF, GPS, cámara, software, XMP, IPTC, C2PA y etiquetas chismosas de herramientas de IA.</p>
+                </article>
+                <article class="how-card wobbly">
+                    <span class="how-art" data-doodle="iconClean"></span>
+                    <h3><span class="how-num">2</span> Tallado forense</h3>
+                    <p>Borramos los metadatos y revelamos la imagen con una cámara simulada: micro-geometría de lente, aberración cromática, viñeteo, mosaico Bayer, ruido de sensor y nitidez.</p>
+                </article>
+                <article class="how-card wobbly">
+                    <span class="how-art" data-doodle="iconCheck"></span>
+                    <h3><span class="how-num">3</span> Revisión final</h3>
+                    <p>Volvemos a escanear el resultado para confirmar que quedó rechinando de limpio. Descarga una por una o todas en ZIP y compruébalo tú mismo en el detector.</p>
+                </article>
+            </div>
+            <p class="disclaimer wobbly"><i class="fa-solid fa-circle-info"></i> Ningún método le gana al 100 % de los detectores: cada uno usa modelos distintos y se actualizan seguido. Úsalo con responsabilidad y respeta las reglas de etiquetado de cada plataforma.</p>
+        </section>
+
+        <!-- ENLACES -->
+        <section id="links-section" class="links" aria-labelledby="links-title">
+            <h2 id="links-title" class="section-title">Enlaces <span class="hand-accent">pa' que no te pierdas</span></h2>
+            <div class="links-grid">
+                <a class="link-card link-card-idea wobbly" href="https://twotensors.ai/app?page=inference" target="_blank" rel="noopener noreferrer">
+                    <span class="link-art" data-doodle="linkIdea"></span>
+                    <span class="link-body">
+                        <span class="link-hand">de aquí salió la idea</span>
+                        <strong>Inspiración: TwoTensors</strong>
+                        <code>twotensors.ai/app?page=inference</code>
+                    </span>
+                    <span class="link-arrow" data-doodle="arrow"></span>
+                </a>
+                <a class="link-card link-card-accent wobbly" href="https://imagedetector.com/es/" target="_blank" rel="noopener noreferrer">
+                    <span class="link-art" data-doodle="linkDetector"></span>
+                    <span class="link-body">
+                        <span class="link-hand">compruébalo tú mismo</span>
+                        <strong>Verificar en ImageDetector</strong>
+                        <code>imagedetector.com/es</code>
+                    </span>
+                    <span class="link-arrow" data-doodle="arrow"></span>
+                </a>
+            </div>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <span data-doodle="footerWave"></span>
+        <div class="footer-inner">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <span class="footer-scene" data-doodle="footerScene"></span>
+                    <div>
+                        <span class="footer-word" data-doodle="wordmarkLight"></span>
+                        <p class="footer-tag">fin del turno, Claude se echó una siesta</p>
+                        <p class="footer-small">Hecho con escoba, jabón y mucho cariño. Tus imágenes nunca salen de tu equipo: todo pasa en tu navegador.</p>
+                    </div>
+                </div>
+                <nav class="footer-col" aria-label="Secciones">
+                    <h4>por aquí</h4>
+                    <ul>
+                        <li><a href="#tool-section">Limpiar imágenes</a></li>
+                        <li><a href="#how-section">Cómo funciona</a></li>
+                        <li><a href="#brawl-section">La gran pelea</a></li>
+                    </ul>
+                </nav>
+                <div class="footer-col">
+                    <h4>por allá</h4>
+                    <ul>
+                        <li><a href="https://twotensors.ai/app?page=inference" target="_blank" rel="noopener noreferrer">Inspiración: TwoTensors</a></li>
+                        <li><a href="https://imagedetector.com/es/" target="_blank" rel="noopener noreferrer">Verificar en ImageDetector</a></li>
+                    </ul>
+                    <div class="footer-badges" style="margin-top:12px">
+                        <span class="footer-badge">0 servidores</span>
+                        <span class="footer-badge">0 metadatos</span>
+                        <span class="footer-badge">100 % jabón</span>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p><span class="footer-spark" data-doodle="sparkle"></span> CLEANER · úsalo con responsabilidad</p>
+                <a class="footer-top" href="#hero-section">volver arriba ↑</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Modal de proceso -->
+    <dialog id="process-dialog" class="process-dialog" aria-labelledby="process-title">
+        <div class="process-head">
+            <div class="process-bucket" data-doodle="bucket"></div>
+            <div class="process-meta">
+                <p class="process-hand">lavando con agua y jabón…</p>
+                <h3 id="process-title">Limpiando imagen <span id="process-count">1 de 1</span></h3>
+                <p id="process-file" class="process-file">imagen.jpg</p>
+            </div>
+        </div>
+
+        <div id="process-stage" class="process-stage wobbly" aria-hidden="true"></div>
+        <p id="process-step-label" class="process-step-label" aria-live="polite">Preparando…</p>
+
+        <div class="process-bar" aria-hidden="true"><span id="process-bar-fill"></span></div>
+        <ol id="process-steps" class="process-steps"></ol>
+    </dialog>
+
+    <!-- Modal de comparación -->
+    <dialog id="compare-dialog" class="compare-dialog">
+        <div class="compare-head">
+            <h3 id="compare-title">Comparar</h3>
+            <button id="compare-close" class="icon-btn" type="button" aria-label="Cerrar"><i class="fa-solid fa-xmark"></i></button>
+        </div>
+        <div id="compare-stage" class="compare-stage">
+            <img id="compare-after" alt="Imagen limpia">
+            <div id="compare-before-wrap" class="compare-before-wrap">
+                <img id="compare-before" alt="Imagen original">
+            </div>
+            <span class="compare-label compare-label-left">Original</span>
+            <span class="compare-label compare-label-right">CLEANER</span>
+            <div id="compare-handle" class="compare-handle"></div>
+        </div>
+        <input id="compare-range" class="compare-range" type="range" min="0" max="100" value="50" aria-label="Deslizar comparación">
+    </dialog>
+
+    <script src="https://cdn.jsdelivr.net/npm/jszip@3.10.1/dist/jszip.min.js"></script>
+    <script src="js/doodles.js"></script>
+    <script src="js/doodles-ui.js"></script>
+    <script src="js/doodles-brawl.js"></script>
+    <script src="js/wobble.js"></script>
+    <script src="js/cleaner-engine.js"></script>
+    <script src="js/app.js"></script>
+</body>
+</html>
